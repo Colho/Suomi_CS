@@ -1,0 +1,15 @@
+#match-wrapper {
+    display: flex;
+  }
+  
+  #left-team {
+    flex: 0 0 33%;
+  }
+
+  #info {
+      flex: 0 0 33%;
+  }
+  
+  #right-team {
+    flex: 0 0 33%;
+  }

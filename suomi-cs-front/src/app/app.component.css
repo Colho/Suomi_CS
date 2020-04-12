@@ -1,0 +1,15 @@
+.match-column {
+    flex: 0 0 70%;
+}
+
+.page-columns {
+    display: flex;
+}
+
+.info-column {
+    flex: 0 0 15%;
+}
+
+.results-column {
+    flex: 0 0 15%;
+}
