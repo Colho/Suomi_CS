@@ -12,6 +12,8 @@ const token = "Pc6B5esWxcCJm0GBe9svCpHiTAmHJ0g6N6BzJlINmIW-jjic8jw";
 const payloadSize = 50;
 var finTeams = [];
 var finMatches = [];
+var matchMinutes = 10, matchInterval = matchMinutes * 60 * 1000;
+var teamMinutes = 1440, teamInterval = teamMinutes * 60 * 1000;
 /* Maybe initialize these?
 EXAMPLE STRUCTURES
 finTeams = 
@@ -27,7 +29,7 @@ finTeams =
 }]
 finMatches = 
 [{
-  type: null (past, ongoing, upcoming),
+  type: null (past, running, upcoming),
   start_time: null,
   opponents: [
     {
@@ -51,72 +53,86 @@ finMatches =
 const app = express();
 app.get('/', async (req, res) => {
   //await updateTeams();
-  await updateMatches();
-  res.send(finMatches);
+  //await updateMatches();
+  res.send("You are on the wrong page, man");
 });
-// Possible future routes for data fetching
-/*
+
+// Returns the teams that are registered as 'finnish teams'
 app.get('/getTeams', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+  res.send(getFinTeams());
 });
 
+// Gets all the matches TODO
 app.get('/getMatches', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
   res.send("asd");
 });
 
+// Gets past matches
 app.get('/getPastMatches', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+  res.send(getFinMatches('past'));
 });
 
-app.get('/getOngoingMatches', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+// Gets running matches
+app.get('/getRunningMatches', async (req, res) => {
+  res.send(getFinMatches('running'));
 });
 
+// Gets upcoming matches
 app.get('/getUpcomingMatches', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+  res.send(getFinMatches('upcoming'));
 });
 
+// Way to update the teams remotely
 app.get('/updateTeams', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+  await updateTeams();
+  res.send("Teams updated!");
 });
 
+// Way to update all the matches remotely
 app.get('/updateMatches', async (req, res) => {
-  //await updateTeams();
-  //await updateMatches();
-  res.send("asd");
+  await updateMatches();
+  res.send("All matches updated!");
 });
 
+// Way to udpate past matches remotely TODO
 app.get('/updatePastMatches', async (req, res) => {
   //await updateTeams();
   //await updateMatches();
   res.send("asd");
 });
 
-app.get('/updateOngoingMatches', async (req, res) => {
+// Way to update running matches remotely TODO
+app.get('/updateRunningMatches', async (req, res) => {
   //await updateTeams();
   //await updateMatches();
   res.send("asd");
 });
 
+// Way to update upcoming matches remotely TODO
 app.get('/updateUpcomingMatches', async (req, res) => {
   //await updateTeams();
   //await updateMatches();
   res.send("asd");
 });
-*/
-// Function that is used to create/update the matches data in past.txt, ongoing.txt and upcoming.txt
+
+
+function getFinTeams() {
+  fs.readFile('teams.txt', (err, data) => {
+    if (err) throw err;
+    finTeams = JSON.parse(data);
+    return finTeams;
+  });
+}
+
+function getFinMatches(matchType) {
+  fs.readFile(matchType + '.txt', (err, data) => {
+    if (err) throw err;
+    finMatches = JSON.parse(data);
+    return finTeams;
+  });
+}
+
+// Function that is used to create/update the matches data in past.txt, running.txt and upcoming.txt
 async function updateMatches() {
   // This needs checking, does this work correctly?
   fs.readFile('teams.txt', (err, data) => {
@@ -194,7 +210,7 @@ async function paginateMatches(type) {
 }
 
 // Function to request matches
-// Needs 3 different cases, past, ongoing and upcoming
+// Needs 3 different cases, past, running and upcoming
 // Past not yet done, because of the required time filter
 const getMatches = async (page, type) => {
   const teamReq = {
@@ -284,6 +300,27 @@ function teamAlreadySaved(teamName) {
   }
   return 0;
 }
+
+// A function to check if a match is already saved in the struct.
+// Returns index if it is, returns 0 if not
+// TODO, this is needed if there are two finnish teams against each other
+function matchAlreadySaved(teamName) {
+  var i;
+  for (i = 0; i < finTeams.length; i++) {
+      if (finTeams[i].team_name === teamName) {
+          return i;
+      }
+  }
+  return 0;
+}
+
+setInterval(async () => {
+  await updateMatches();
+}, matchInterval);
+
+setInterval(async () => {
+  await updateTeams();
+}, teamInterval);
 
 // Start server
 app.listen(PORT, HOST);
