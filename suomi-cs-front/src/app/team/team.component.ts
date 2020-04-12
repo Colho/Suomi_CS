@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  public name : string;
+
+  constructor() { 
+    this.name = "ENCE";
+  }
 
   ngOnInit(): void {
   }

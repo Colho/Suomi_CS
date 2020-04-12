@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Time} from '@angular/common'
 
 @Component({
   selector: 'app-info',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  public time : Time;
+  public date : Date;
+
+  constructor() {
+    this.time = {hours: 21, minutes: 30};
+    this.date = new Date();
+   }
 
   ngOnInit(): void {
   }

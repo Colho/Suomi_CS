@@ -1,5 +1,6 @@
 .match-column {
     flex: 0 0 70%;
+    justify-content: center;
 }
 
 .page-columns {
