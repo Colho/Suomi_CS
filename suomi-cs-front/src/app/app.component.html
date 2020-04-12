@@ -1,5 +1,14 @@
+<!--
 <div class="page-columns">
-  <div class="info-columns">info will be here. This is a placeholder for future things. This app is delivered as is.</div>
+  <div class="info-columns">This will keep data of the followed teams. This app is delivered as is.</div>
   <app-match class="match-column"></app-match>
   <div class="results-column">results will be here. results fetching is a feature that will be done later</div>
+</div>
+-->
+<div>
+  <button (click)="fetchTeams()">Fetch Teams</button>
+  <hr />
+  <ul>
+    <li *ngFor="let team of teams">team.name</li>
+  </ul>
 </div>
