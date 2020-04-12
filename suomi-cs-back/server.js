@@ -62,6 +62,12 @@ app.get('/getTeams', async (req, res) => {
   res.send(getFinTeams());
 });
 
+// Alternate route for Angular
+app.get('/api/getTeams', async (req, res) => {
+  getFinTeams();
+  res.send(finTeams);
+});
+
 // Gets all the matches TODO
 app.get('/getMatches', async (req, res) => {
   res.send("asd");
