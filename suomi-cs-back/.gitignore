@@ -1,3 +1,9 @@
+# text files where the data is stored on the server, no need to push
+upcoming.txt
+running.txt
+past.txt
+teams.txt
+
 # Logs
 logs
 *.log
