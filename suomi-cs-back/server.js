@@ -246,7 +246,7 @@ async function updateTeams() {
         if (player.hometown == "Finland") {
           // New team to be saved to JSON object
           var index = teamAlreadySaved(team.name);
-          if (index == 0) {
+          if (index < 0) {
             var o = {};
             o.team_name = team.name;
             o.team_id = team.id;
@@ -296,7 +296,7 @@ const getTeams = async (page) => {
 }
 
 // A function to check if a team is already saved in the struct.
-// Returns index if it is, returns 0 if not
+// Returns index if it is, returns -1 if not
 function teamAlreadySaved(teamName) {
   var i;
   for (i = 0; i < finTeams.length; i++) {
@@ -304,11 +304,11 @@ function teamAlreadySaved(teamName) {
           return i;
       }
   }
-  return 0;
+  return -1;
 }
 
 // A function to check if a match is already saved in the struct.
-// Returns index if it is, returns 0 if not
+// Returns index if it is, returns -1 if not
 // TODO, this is needed if there are two finnish teams against each other
 function matchAlreadySaved(teamName) {
   var i;
@@ -317,7 +317,7 @@ function matchAlreadySaved(teamName) {
           return i;
       }
   }
-  return 0;
+  return -1;
 }
 
 setInterval(async () => {
