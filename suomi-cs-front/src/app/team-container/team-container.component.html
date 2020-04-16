@@ -1,0 +1,4 @@
+<p>Followed teams</p>
+<ul *ngIf="dataLoaded">
+    <li *ngFor="let map of mapped">{{map?.value.team_name}}</li>
+</ul>
