@@ -1,4 +1,7 @@
 <p>Followed teams</p>
 <ul *ngIf="dataLoaded">
-    <li *ngFor="let map of mapped">{{map?.value.team_name}}</li>
+    <li *ngFor="let map of mapped" class="team-container-list">
+        <a href=""><img [src]="map?.value.team_image_url" alt="icon" width="60" height="auto" /></a>
+        <h3>{{map?.value.team_name}}</h3>
+    </li>
 </ul>

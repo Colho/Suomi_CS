@@ -1,0 +1,16 @@
+.team-container-list {
+    list-style-type: none;
+    margin-left:0px;
+    padding-left:0px;
+    display: inline-block;
+}
+
+.team-container-list img {
+    float:left;
+}
+
+.team-container-list p,h3 {
+    text-align: right; 
+    display:inline-block;
+    padding: 0;
+}
