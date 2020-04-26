@@ -154,6 +154,7 @@ async function updateMatches() {
 // A function to go through different types of matches. This needs some review
 // Is it really necessary to go through different kinds of matches separately.
 async function paginateMatches(type) {
+  console.log("Matches updating");
   let keepGoing = true;
   let page = 1;
   finMatches = [];
@@ -225,12 +226,15 @@ const getMatches = async (page, type) => {
         "Authorization" : "Bearer " + token
       }
   };
-  let payload = await request(teamReq);
+  let payload = await request(teamReq).catch(function () {
+    console.log("we fucked up m8 1");
+  });;
   return payload;
 }
 
 // Async function that can be used to update/create the team data in teams.txt
 async function updateTeams() {
+  console.log("Teams updating");
   let keepGoing = true;
   let page = 1;
   finTeams = [];
@@ -291,7 +295,9 @@ const getTeams = async (page) => {
         "Authorization" : "Bearer " + token
       }
   };
-  let payload = await request(teamReq);
+  let payload = await request(teamReq).catch(function () {
+    console.log("we fucked up m8 2");
+  });
   return payload;
 }
 
