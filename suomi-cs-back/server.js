@@ -68,6 +68,11 @@ app.get('/api/getTeams', async (req, res) => {
   res.send(finTeams);
 });
 
+app.get('/api/getUpcoming', async (req, res) => {
+  getFinMatches('upcoming');
+  res.send(finMatches);
+});
+
 // Gets all the matches TODO
 app.get('/getMatches', async (req, res) => {
   res.send("asd");
@@ -134,7 +139,7 @@ function getFinMatches(matchType) {
   fs.readFile(matchType + '.txt', (err, data) => {
     if (err) throw err;
     finMatches = JSON.parse(data);
-    return finTeams;
+    return finMatches;
   });
 }
 

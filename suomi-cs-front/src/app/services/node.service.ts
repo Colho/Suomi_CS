@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
+export interface Matches {
+  type: null,
+  start_time: null,
+  opponents: Array<Teams>,
+  score_maps: null,
+  score_rounds: null,
+  league: null,
+  league_image_url: null
+}
 
 export interface Teams {
   team_name: null,
@@ -26,6 +34,10 @@ export class NodeService {
 
   fetchTeams(): Observable<Object> {
     return this.http.get<Array<Teams>>('/api/getTeams');
+  }
+
+  fetchUpcoming(): Observable<Object> {
+    return this.http.get<Array<Matches>>('/api/getUpcoming');
   }
 
   getTeams() {

@@ -3,3 +3,11 @@
     <app-info id="info"></app-info>
     <app-team id="right-team"></app-team>
 </div>
+<p>Upcoming matches</p>
+<ul *ngIf="matchDataLoaded">
+    <li *ngFor="let map of mappedMatches" id="match-wrapper">
+        <app-team id="left-team"></app-team>
+        <app-info id="info"></app-info>
+        <app-team id="right-team"></app-team>
+    </li>
+</ul>
