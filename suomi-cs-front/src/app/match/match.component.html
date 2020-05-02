@@ -1,13 +1,8 @@
-<div id="match-wrapper">
-    <app-team id="left-team"></app-team>
-    <app-info id="info"></app-info>
-    <app-team id="right-team"></app-team>
-</div>
 <p>Upcoming matches</p>
 <ul *ngIf="matchDataLoaded">
     <li *ngFor="let map of mappedMatches" id="match-wrapper">
-        <app-team id="left-team"></app-team>
+        <app-team [pic]="map?.value.opponents[0]?.team_image_url" [name]="map?.value.opponents[0]?.name" id="left-team"></app-team>
         <app-info id="info"></app-info>
-        <app-team id="right-team"></app-team>
+        <app-team [pic]="map?.value.opponents[1]?.team_image_url" [name]="map?.value.opponents[1]?.name" id="right-team"></app-team>
     </li>
 </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-team',
@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  public name : string;
+  @Input() public name : string;
+  @Input() public pic : string;
 
-  constructor() { 
-    this.name = "ENCE";
+  constructor() {
   }
 
   ngOnInit(): void {
