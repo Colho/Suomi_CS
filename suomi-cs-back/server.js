@@ -197,10 +197,12 @@ async function paginateMatches(type) {
           o2.finPlayers = [];
           m.score_maps = null;
           m.score_rounds = null;
-          m.league = null;
+          m.league = match.league.url;
           m.league_image_url = null;
           m.opponents.push(o1, o2);
-          finMatches.push(m);
+          if (matchAlreadySaved(m.opponents[0].name, m.opponents[1].name) < 1) {
+            finMatches.push(m);
+          }
         }
       });
     });
@@ -321,10 +323,10 @@ function teamAlreadySaved(teamName) {
 // A function to check if a match is already saved in the struct.
 // Returns index if it is, returns -1 if not
 // TODO, this is needed if there are two finnish teams against each other
-function matchAlreadySaved(teamName) {
+function matchAlreadySaved(teamName1, teamName2) {
   var i;
-  for (i = 0; i < finTeams.length; i++) {
-      if (finTeams[i].team_name === teamName) {
+  for (i = 0; i < finMatches.length; i++) {
+      if (finMatches[i].opponents[0].name === teamName1 || finMatches[i].opponents[1].name == teamName2) {
           return i;
       }
   }
