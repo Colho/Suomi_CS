@@ -2,7 +2,7 @@
 <ul *ngIf="matchDataLoaded">
     <li *ngFor="let map of mappedMatches" id="match-wrapper">
         <app-team [pic]="map?.value.opponents[0]?.team_image_url" [name]="map?.value.opponents[0]?.name" id="left-team"></app-team>
-        <app-info id="info"></app-info>
+        <app-info [matchTime]="map?.value.start_time" [league]="map?.value.league" id="info"></app-info>
         <app-team [pic]="map?.value.opponents[1]?.team_image_url" [name]="map?.value.opponents[1]?.name" id="right-team"></app-team>
     </li>
 </ul>
