@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Time} from '@angular/common'
 
 @Component({
@@ -10,6 +10,8 @@ export class InfoComponent implements OnInit {
 
   public time : Time;
   public date : Date;
+  @Input() matchTime : string;
+  @Input() league : string;
 
   constructor() {
     this.time = {hours: 21, minutes: 30};
