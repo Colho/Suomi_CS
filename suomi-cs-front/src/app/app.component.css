@@ -1,6 +1,7 @@
 .match-column {
     flex: 0 0 70%;
     justify-content: center;
+    margin: 8px;
 }
 
 .page-columns {
@@ -9,8 +10,15 @@
 
 .info-column {
     flex: 0 0 15%;
+    margin: 8px;
 }
 
 .results-column {
     flex: 0 0 15%;
+    margin: 8px;
+}
+
+.app-background {
+    /*background-color: #9448bc*/
+    background-color: #A3A5A9;   
 }

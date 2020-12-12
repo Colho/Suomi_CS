@@ -2,8 +2,8 @@
     list-style-type: none;
     margin-left:0px;
     padding-left:0px;
-    display: inline-block;
 }
+
 
 .team-container-list img {
     float:left;
@@ -13,4 +13,24 @@
     text-align: right; 
     display:inline-block;
     padding: 0;
+}
+
+.team-container-list:nth-child(odd) {
+    /*background-color: #6e4b95;*/
+    background-color: #72767E;
+}
+.team-container-list:nth-child(even) {
+    /*background-color: #743795;*/
+    background-color: #7C8391;
+}
+
+.team-container-header {
+    border-style: dashed;
+    border-color: #BBBAC6;
+    padding: 10px;
+}
+
+.list-nuller {
+    padding: 0px;
+    margin: 0px;
 }

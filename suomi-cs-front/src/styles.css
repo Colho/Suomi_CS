@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
-/*html {
-    background-color: darkslategrey;
-}*/
+html {
+    /*background-color: #480355;*/
+    background-color: #67686b;
+    color: white;
+}

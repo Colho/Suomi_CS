@@ -1,18 +1,38 @@
+.match-header {
+  border-style: dashed;
+  border-color: #BBBAC6;
+  padding: 10px;
+}
+
 #match-wrapper {
     display: flex;
     border-style: ridge;
-    border-color: black;
-    border-radius: 10px;
+    border-color: rgb(221, 35, 35);
+    border-radius: 0px;
   }
   
-  #left-team {
+#left-team {
     flex: 0 0 33%;
-  }
+}
 
-  #info {
-      flex: 0 0 33%;
-  }
-  
-  #right-team {
+#info {
     flex: 0 0 33%;
-  }
+}
+  
+#right-team {
+    flex: 0 0 33%;
+}
+
+.list-nuller {
+    padding: 0px;
+    margin: 0px;
+}
+
+#match-wrapper:nth-child(odd) {
+    /*background-color: #6e4b95;*/
+    background-color: #72767E;
+}
+#match-wrapper:nth-child(even) {
+    /*background-color: #743795;*/
+    background-color: #7C8391;
+}
