@@ -159,7 +159,7 @@ async function updateMatches() {
 // A function to go through different types of matches. This needs some review
 // Is it really necessary to go through different kinds of matches separately.
 async function paginateMatches(type) {
-  console.log("Matches updating");
+  console.log(type + " matches updating");
   let keepGoing = true;
   let page = 1;
   finMatches = [];
@@ -181,7 +181,7 @@ async function paginateMatches(type) {
       finTeams.forEach(function(team) {
         // This should be more modular
         if (match.opponents[0].opponent.name == team.team_name || match.opponents[1].opponent.name == team.team_name) {
-          //console.log(team.name);
+          console.log(team.team_name);
           var m = {};
           m.type = type;
           m.start_time = match.begin_at;
@@ -261,6 +261,9 @@ async function updateTeams() {
             var o = {};
             o.team_name = team.name;
             o.team_id = team.id;
+            if (team.image_url == null) {
+              team.image_url = "assets/images/nopic.png";
+            }
             o.team_image_url = team.image_url;
             o.players = [];
             var p = {};
